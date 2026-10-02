@@ -196,12 +196,12 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   box-shadow: 0 0 0 6px #ff6b1a40, 0 6px 18px #0000004d; transition: transform .25s var(--ease), box-shadow .25s;
 }
 .hotspot:hover, .hotspot.is-active { transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 0 0 10px #ff6b1a4d, 0 6px 18px #0000004d; }
-.hotspot[data-spot="1"] { --x: 29.5%; --y: 54%; }
-.hotspot[data-spot="2"] { --x: 62%; --y: 42.6%; }
-.hotspot[data-spot="3"] { --x: 45.3%; --y: 22.7%; }
-.hotspot[data-spot="4"] { --x: 23.8%; --y: 31.4%; }
-.hotspot[data-spot="5"] { --x: 37.1%; --y: 81.3%; }
-.hotspot[data-spot="6"] { --x: 54.4%; --y: 62.7%; }
+.hotspot[data-spot="1"] { --x: 43.8%; --y: 40%; }
+.hotspot[data-spot="2"] { --x: 63%; --y: 39%; }
+.hotspot[data-spot="3"] { --x: 48.8%; --y: 29.3%; }
+.hotspot[data-spot="4"] { --x: 29.4%; --y: 58%; }
+.hotspot[data-spot="5"] { --x: 44%; --y: 82.9%; }
+.hotspot[data-spot="6"] { --x: 51.3%; --y: 48.2%; }
 .anatomy-list { list-style: none; margin: 0; padding: 0; counter-reset: spot; }
 .anatomy-list li {
   counter-increment: spot; position: relative; padding: 18px 0 18px 56px; border-top: 1px solid var(--line);
@@ -466,6 +466,47 @@ dialog::backdrop { background: #070a09b3; backdrop-filter: blur(4px); }
   .chat-panel { left: 10px; right: 10px; bottom: 82px; width: auto; height: min(600px, calc(100dvh - 100px)); }
   .chat-message { font-size: 15px; }
   dialog { padding: 28px 22px; }
+}
+/* ---------- контакты, основное решение ---------- */
+.draft-bar a { color: #fff; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.header-phone { font-weight: 600; font-size: 16px; white-space: nowrap; opacity: .92; }
+.header-phone:hover { opacity: 1; color: var(--accent); }
+.feature-card {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); width: 100%; padding: 0; overflow: hidden; text-align: left;
+  background: var(--ink-2); color: #fff; border: 1px solid #ff6b1a66; border-radius: var(--radius);
+  transition: border-color .3s, transform .4s var(--ease);
+}
+.feature-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.feature-figure { display: block; overflow: hidden; background: #22292d; min-height: 100%; }
+.feature-figure img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.feature-card:hover .feature-figure img { transform: scale(1.04); }
+.feature-body { display: flex; flex-direction: column; padding-bottom: 0; }
+.feature-body .system-meta { padding-top: 32px; }
+.feature-body .system-title { font-size: clamp(32px, 3.4vw, 44px); }
+.feature-list { display: block; padding: 18px 28px 28px; }
+.feature-list > span { display: block; position: relative; padding: 10px 0 10px 30px; border-top: 1px solid var(--line-dark); color: #d3dad7; font-size: 16px; }
+.feature-list > span::before { content: ''; position: absolute; left: 2px; top: 17px; width: 13px; height: 7px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+.extra-title { margin: 56px 0 20px; font-size: 22px; color: var(--muted-light); font-weight: 500; }
+.compare .is-main { color: #fff; background: #ff6b1a14; }
+.compare thead .is-main { color: var(--accent); }
+.contact-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
+.contact-card { display: block; padding: 18px 20px; border-radius: var(--radius); background: var(--ink); color: #fff; transition: transform .25s var(--ease), background .25s; }
+.contact-card:hover { transform: translateY(-3px); background: var(--ink-3); }
+.contact-card span { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.contact-card b { display: block; margin-top: 6px; font-size: 19px; font-weight: 600; overflow-wrap: anywhere; }
+#form-success a { color: var(--accent-ink); font-weight: 600; }
+.footer-contacts { display: flex; flex-direction: column; gap: 8px; font-size: 17px; }
+.footer-contacts a { color: #fff; font-weight: 600; }
+.footer-contacts a:hover { color: var(--accent); }
+.footer-contacts span { color: #8e9894; font-size: 14px; }
+@media (max-width: 1180px) { .header-phone { display: none; } }
+@media (max-width: 980px) {
+  .feature-card { grid-template-columns: minmax(0, 1fr); }
+  .feature-figure { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 640px) {
+  .contact-cards { grid-template-columns: minmax(0, 1fr); }
+  .feature-list { padding-inline: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html, .chat-messages { scroll-behavior: auto; }
